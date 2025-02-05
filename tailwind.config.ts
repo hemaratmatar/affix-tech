@@ -13,6 +13,9 @@ export default {
         foreground: "var(--foreground)",
       },
     },
+    animation: {
+      fade: 'fade 0.5s ease-in-out',
+    },
   },
   plugins: [],
 } satisfies Config;
