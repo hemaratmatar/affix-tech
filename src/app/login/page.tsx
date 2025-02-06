@@ -1,6 +1,12 @@
 import Link from "next/link";
+import AuthLayout from "../components/layouts/AuthLayout";
 
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+    title: "Login - Affix Tech",
+    description: "Affix Tech Blog Post",
+  };
 
 const Login = ({ }) => {
 //   const [formData, setFormData] = useState({
@@ -231,4 +237,7 @@ const Login = ({ }) => {
 // });
 
 // export default connect(mapStateToProps, { login })(Login);
-export default Login
+// export default Login
+export default function Page() {
+  return <AuthLayout><Login /></AuthLayout>;
+}

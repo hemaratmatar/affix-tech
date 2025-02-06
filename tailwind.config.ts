@@ -12,9 +12,14 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      zIndex: {
+        '-1': '-1',
+        '-99': '-99',
+        '100': '100',
+      },
     },
     animation: {
-      fade: 'fade 0.5s ease-in-out',
+      fade: 'fade 3s ease-in-out',
     },
   },
   plugins: [],
