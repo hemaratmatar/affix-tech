@@ -3,9 +3,9 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Home - Affix Tech",
-    description: "Affix Tech Blog Post",
-  };
+  title: "Home - Affix Tech",
+  description: "Affix Tech Blog Post",
+};
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,7 +16,6 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
 
 export default function RootLayout({
   children,

@@ -2,18 +2,18 @@ import { ReactNode } from "react";
 import Header from "./header";
 import Navbar from "./navbar";
 
-
 type MainLayoutProps = {
   children: ReactNode;
 };
 
 const MainLayout = ({ children }: MainLayoutProps) => {
   return (
-    <div className="main-layout">
-        <Header />
-        <Navbar />
+    <div className="">
+      <Header />
+      <Navbar />
+
       <main>{children}</main>
-      <footer>Footer</footer>
+      <footer>footer</footer>
     </div>
   );
 };
