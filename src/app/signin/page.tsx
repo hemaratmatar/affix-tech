@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     description: "Affix Tech Blog Post",
   };
 
-const Login = ({ }) => {
+const Signin = ({ }) => {
 //   const [formData, setFormData] = useState({
 //     identifier: "",
 //     password: "",
@@ -32,7 +32,7 @@ const Login = ({ }) => {
   // const backendurl = "http://localhost:1337/admin";
 
   return (
-    <div className="flex overflow-auto min-h-screen p-4 bg-gray-100  md:items-center lg:justify-center">
+    <div className="flex overflow-auto min-h-screen p-4 bg-[url(/bg/bg-signin.jpg)]   md:items-center lg:justify-center">
       <div className="flex flex-col w-full lg:overflow-hidden overflow-auto bg-white rounded-md shadow-lg max md:flex-row md:flex-1 lg:max-w-screen-xl">
         <div className="lg:flex content-center lg:flex-1 lg:max-w-screen-xl p-4 py-6 text-white bg-gradient-to-tl from-purple-500 to-red-500  md:w-80 md:flex-1 md:flex-shrink-0 md:flex md:flex-col md:items-center ">
           <div className="my-3 text-4xl font-bold tracking-wider text-center">
@@ -40,44 +40,42 @@ const Login = ({ }) => {
           </div>
 
 
-          <div className="flex flex-col items-center justify-center mt-36 text-xl  ">
-          <p className="  ">
-            <span>See You The Answer</span>
-          </p>            
-          </div>
-
-          <div className=" my-8 p-4 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4 md:justify-center">
+          <div className="flex flex-col items-center justify-center my-4 ">
+            <p className="text-center text-xl">
+              <span>See You The Answer</span>
+            </p>
+            <div className=" my-4 p-4 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4 md:justify-center">
             <div className="flex-shrink-0">
               <img
                 className="h-12 w-12"
-                src="https://avatars.dicebear.com/api/adventurer/Oven.svg"
+                src="https://api.dicebear.com/9.x/bottts/webp"
                 alt="ChitChat Logo"
               />
             </div>
             <div>
               <div className="text-xl font-medium text-black">
-                Title Recommend
+              Coventry City Guide Including Coventry Hotels
               </div>
-              <p className="text-gray-500  break-words">Detail Recommend</p>
+              <p className="text-gray-500 text-md  line-clamp-3">The diseases most commonly seen in travellers are diarrhoea, malaria (if you travel in a malaria-infested area), accidents (when travelling by automobile or swimming), wound infections and</p>
             </div>
           </div>
-          <div className="my-8 p-4 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
+          <div className="my-4 p-4 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
             <div className="flex-shrink-0">
               <img
                 className="h-12 w-12"
-                src="https://avatars.dicebear.com/api/adventurer/c.svg"
+                src="https://api.dicebear.com/9.x/bottts/webp"
                 alt="ChitChat Logo"
               />
             </div>
             <div>
               <div className="text-xl font-medium text-black">
-                Title Recommend
+              Planning a Trip to Japan in the Time of Covid
               </div>
-              <p className="text-gray-500 break-all">Detail Recommend</p>
+              <p className="text-gray-500 line-clamp-3">Whether you’re just daydreaming for the moment, or planning a trip for the future, we’ve compiled essential information about visiting Japan in the time of Covid-19...</p>
             </div>
           </div>
 
-          <p className="flex flex-col items-center justify-center text-white mt-36 text-center">
+          <p className="flex flex-col items-center justify-center text-white my-4 text-center">
             <span>Create by Hemarat & Natthakit</span>
             {/* <a href="#" className="underline">
                 Get Started!
@@ -93,6 +91,9 @@ const Login = ({ }) => {
                 conditions
               </a>
             </p> */}
+          </div>
+
+
         </div>
         <div className="items-center p-5 bg-white md:flex-1">
           <h3 className="my-4 text-2xl font-semibold text-gray-700">
@@ -157,12 +158,12 @@ const Login = ({ }) => {
 
             <button
               type="submit"
-              className="w-full px-4 py-2 text-lg font-semibold text-white transition-colors duration-300 bg-red-400 hover:bg-gradient-to-r hover:from-purple-400 hover:to-red-400 transition-all duration-700 ease-in-out bg-[length:200%_100%] hover:bg-[length:100%_100%] rounded-md shadow focus:outline-none focus:ring-red-200 focus:ring-4"
+              className="w-full px-4 py-2 text-lg font-semibold text-white bg-red-400 hover:bg-gradient-to-r hover:from-purple-500 hover:to-red-400 transition-all duration-700 ease-in-out bg-[length:200%_100%] hover:bg-[length:100%_100%] rounded-md shadow focus:outline-none focus:ring-red-200 focus:ring-4"
             >
               Log in
             </button>
 
-            <Link href="/signup" className="w-full px-4 py-2 text-lg text-center font-semibold text-white bg-red-400 hover:bg-gradient-to-r hover:from-purple-400 hover:to-red-400 transition-all duration-700 ease-in-out bg-[length:200%_100%] hover:bg-[length:100%_100%] rounded-md shadow  focus:outline-none focus:ring-red-200 focus:ring-4">
+            <Link href="/signup" className="w-full px-4 py-2 text-lg text-center font-semibold text-white bg-red-400 hover:bg-gradient-to-r hover:from-purple-500 hover:to-red-400 transition-all duration-700 ease-in-out bg-[length:200%_100%] hover:bg-[length:100%_100%] rounded-md shadow  focus:outline-none focus:ring-red-200 focus:ring-4">
 
                 Sign Up
  
@@ -239,5 +240,5 @@ const Login = ({ }) => {
 // export default connect(mapStateToProps, { login })(Login);
 // export default Login
 export default function Page() {
-  return <AuthLayout><Login /></AuthLayout>;
+  return <AuthLayout><Signin /></AuthLayout>;
 }
