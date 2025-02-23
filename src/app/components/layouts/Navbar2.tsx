@@ -1,24 +1,34 @@
 "use client";
 
 import { useState } from 'react'
+import Image from "next/image";
 // import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
-import { AiOutlineSearch } from "react-icons/ai";
+import Link from 'next/link';
+// import { AiOutlineSearch } from "react-icons/ai";
 
 // ข้อมูลสำหรับเมนู (ปรับได้ตามต้องการ)
 const menuData = {
-  engagement: [
-    { name: "About", href: "#" },
-    { name: "Customers", href: "#" },
-    { name: "Press", href: "#" },
-    { name: "Careers", href: "#" },
-    { name: "Privacy", href: "#" },
+  affixtech: [
+    { name: "About", href: "/about" },
+    // { name: "Customers", href: "#" },
+    // { name: "Press", href: "#" },
+    { name: "Privacy Policy", href: "/privacy-policy" },
+    { name: "Contact Us", href: "/contact" },
   ],
-  resources: [
-    { name: "Community", href: "#" },
-    { name: "Partners", href: "#" },
-    { name: "Guides", href: "#" },
-    { name: "Webinars", href: "#" },
+  users: [
+    { name: "General", href: "/general" },
+    { name: "PC & Laptop", href: "/pc-labtop" },
+    { name: "Website", href: "/website" },
+    { name: "Mobile", href: "/mobile" },
+    { name: "Gadget", href: "/gadget" },
+  ],
+  developments: [
+    { name: "Dev", href: "/developer" },
+    { name: "Website", href: "/website" },
+    { name: "Mobile", href: "/mobile-dev" },
+    { name: "AI", href: "/artificial-intelligence" },
+    { name: "Security", href: "/security" },
   ],
   articles: [
     {
@@ -28,7 +38,7 @@ const menuData = {
       description: "Et dolore officia quas nostrum esse odit cum iure de esse.",
       href: "#",
       imageUrl:
-        "https://images.unsplash.com/photo-1600195077070-04e54a58f8d8?auto=format&fit=crop&w=300&h=200&q=80",
+        "https://fastly.picsum.photos/id/4/200/200.jpg?hmac=ozRrjh7SMobdmKcOU0f5sWYszFW9Or1c90qeq7uqtuw",
     },
     {
       title: "How to use search engine optimization to drive sales",
@@ -38,7 +48,7 @@ const menuData = {
         "Optio cum necessitatibus dolor voluptatem provident commodi et.",
       href: "#",
       imageUrl:
-        "https://images.unsplash.com/photo-1573497019397-1c51437aa727?auto=format&fit=crop&w=300&h=200&q=80",
+        "https://fastly.picsum.photos/id/4/200/200.jpg?hmac=ozRrjh7SMobdmKcOU0f5sWYszFW9Or1c90qeq7uqtuw",
     },
   ],
 };
@@ -46,14 +56,15 @@ const menuData = {
 export default function MegaMenu() {
     const [isOpen, setIsOpen] = useState(false);
   return (
-    <nav className="bg-gradient-to-r from-purple-400 to-red-400 text-white ">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <nav className="bg-gradient-to-r from-purple-400 to-red-400 text-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center">
       <div className="container mx-auto flex items-center justify-between">
                 {/* โลโก้หรือชื่อเว็บ */}
         {/* <div className="text-lg font-bold">MyWebsite</div> */}
 
         {/* ใช้ Popover สำหรับเมนู */}
-        <Popover className=" z-50">
+        <div className="flex md:mx-auto order-2 md:order-1">
+        <Popover className=" z-10">
           <PopoverButton className="inline-flex items-center gap-x-1 text-sm font-medium"
           onClick={() => setIsOpen(!isOpen)}
           >
@@ -78,15 +89,54 @@ export default function MegaMenu() {
           </div>
           </PopoverButton>
 
-          <PopoverPanel className="absolute  bg-gradient-to-r from-purple-400 to-red-400 text-white shadow-lg left-1/2 transform -translate-x-1/2 w-screen max-w-full mt-2 overflow-hidden">
+          <PopoverPanel className="absolute  bg-gradient-to-r from-purple-400 to-red-400 text-white shadow-lg left-1/2 transform -translate-x-1/2 w-screen max-w-full mt-2 overflow-hidden h-screen md:h-auto z-10 ">
                 <div className="container mx-auto p-6">
                 <div className="flex justify-between  mx-auto  ">
-              <div className="flex flex-row justify-between w-full">
-                {/* คอลัมน์ซ้าย: Engagement */}
-                <div>
-                  <h3 className="text-base font-semibold mb-2">Engagement</h3>
+              <div className="flex flex-col md:flex-row justify-between w-full">
+                {/* คอลัมน์ซ้าย: affixtech */}
+                <div className='hidden md:block'>
+                  <h3 className=" font-semibold mb-2">Affix Tech</h3>
                   <ul className="space-y-1">
-                    {menuData.engagement.map((item) => (
+                  {menuData.affixtech.map((item) => (
+                    <li key={item.name}>
+                    <a href={item.href} className="transition-colors">
+                      {item.name}
+                    </a>
+                    </li>
+                  ))}
+                  </ul>
+                </div>
+                <div className="md:hidden">
+                  {/* <h3 className="text-base font-semibold mb-2">Menu</h3> */}
+                  <ul className="space-y-1">
+                  {Object.keys(menuData).map((key) => (
+                    <li key={key}>
+                    <Popover className="relative">
+                      <PopoverButton className="font-medium py-2 px-2">
+                      {key.charAt(0).toUpperCase() + key.slice(1)}
+                      </PopoverButton>
+                      <PopoverPanel className="relative z-99 bg-white text-black p-4 mt-2 rounded shadow-lg">
+                      <ul className="space-y-1">
+                        {menuData[key as keyof typeof menuData].map((item: { name?: string; title?: string; href: string }) => (
+                        <li key={item.name || item.title}>
+                          <a href={item.href} className="transition-colors">
+                          {item.name || item.title}
+                          </a>
+                        </li>
+                        ))}
+                      </ul>
+                      </PopoverPanel>
+                    </Popover>
+                    </li>
+                  ))}
+                  </ul>
+                </div>
+
+                {/* คอลัมน์กลาง: users */}
+                <div className='hidden md:block'>
+                  <h3 className="text-base font-semibold mb-2">Category</h3>
+                  <ul className="space-y-1">
+                    {menuData.users.map((item) => (
                       <li key={item.name}>
                         <a href={item.href} className="transition-colors">
                           {item.name}
@@ -95,12 +145,11 @@ export default function MegaMenu() {
                     ))}
                   </ul>
                 </div>
-
-                {/* คอลัมน์กลาง: Resources */}
-                <div>
-                  <h3 className="text-base font-semibold mb-2">Resources</h3>
+                {/* คอลัมน์กลาง: developments */}
+                <div className='hidden md:block'>
+                  <h3 className="text-base font-semibold mb-2">Category</h3>
                   <ul className="space-y-1">
-                    {menuData.resources.map((item) => (
+                    {menuData.developments.map((item) => (
                       <li key={item.name}>
                         <a href={item.href} className="transition-colors">
                           {item.name}
@@ -111,13 +160,16 @@ export default function MegaMenu() {
                 </div>
 
                 {/* คอลัมน์ขวา: บทความ/ข่าวสาร */}
-                <div>
+                <div className='hidden md:block'>
                   {menuData.articles.map((article) => (
                     <div key={article.title} className="mb-4 flex gap-4">
                       {/* รูปภาพบทความ */}
-                      <img
+                      
+                      <Image
                         src={article.imageUrl}
                         alt={article.title}
+                        width={200}
+                        height={200}
                         className="h-20 w-28 rounded object-cover"
                       />
                       <div>
@@ -137,18 +189,29 @@ export default function MegaMenu() {
                     </div>
                   ))}
                 </div>
+                <div className="text-right md:hidden mt-4">
+                  <button className='rounded-full mx-2 bg-purple-500 px-4 py-2'>Sign In</button>
+                  <button className='rounded-full mx-2 bg-purple-500 px-4 py-2'> Get started</button>
+                </div>
               </div>
             </div>
                 </div>
           </PopoverPanel>
         </Popover>
+        </div>
         {/* โลโก้หรือชื่อเว็บ */}
-        <h1 className="text-lg font-semibold">Affix Tech</h1>
+        <div className="flex mx-auto order-1 md:order-2">
+          <h1 className="text-lg font-semibold">Affix Tech</h1>
+        </div>
+        <div className="hidden md:flex md:flex-row mx-auto order-3">
 
+                  <Link className='rounded-full mx-2 bg-purple-500 px-4 py-2' href='/signin'>Sign In</Link>
+                  <button className='rounded-full mx-2 bg-purple-500 px-4 py-2'> Get started</button>
+        </div>
                 {/* Search Icon */}
-                <AiOutlineSearch
+                {/* <AiOutlineSearch
                   className={`w-6 h-6  ${isOpen ? "text-black" : "text-white"}`}
-                />
+                /> */}
         </div>
 
       </div>
